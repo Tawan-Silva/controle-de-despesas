@@ -13,7 +13,7 @@ let transactions = localStorage
 
 const removeTransaction = ID => {
     transactions = transactions.filter(transaction =>
-        id !== ID);
+        transaction.id !== ID);
     updateLocalStorage()
     init()
 }
@@ -44,7 +44,7 @@ const getIncome = transactionAmounts => transactionAmounts
     .toFixed(2);
 
 const getTotal = transactionAmounts => transactionAmounts
-    .reduce((accumulator, transaction) => accumulator + transaction, 0)
+    .reduce((accumulator, s) => accumulator + s, 0)
     .toFixed(2);
 
 const updateBalanceValue = () => {
@@ -98,10 +98,10 @@ const hardleFormSubmit = event => {
         return;
     }
 
-    addToTransactionsArray(transactionName, transactionAmount)
-    init()
-    updateLocalStorage()
-    clearInputs()
+    addToTransactionsArray(transactionName, transactionAmount);
+    init();
+    updateLocalStorage();
+    clearInputs();
 }
 
 form.addEventListener('submit', hardleFormSubmit);
